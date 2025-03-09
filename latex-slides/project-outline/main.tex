@@ -1,0 +1,56 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{url}
+
+% -- To keep the outline close to a single page (excluding Tasks/References) --
+\renewcommand{\baselinestretch}{0.98}
+
+\title{CRISPR-Based Multi-Omics Integration and Essentiality Analysis}
+\author{%
+  Anika Thatavarthy (GitHub: \texttt{AnikaTha})\\
+  Param Somane (GitHub: \texttt{ChestnutKurisu})\\
+  Andrii Dovhaniuk (GitHub: \texttt{Andreydovhaniuk})\\
+  Elizabeth Murphy (GitHub: \texttt{elizabethmurphy024})
+}
+\date{MED 263 -- Winter 2025}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\noindent
+CRISPR-based gene editing has enabled large-scale functional studies to identify genes essential for cell viability under various contexts. Recent multi-omics resources, such as DepMap \cite{depmap2024} and specialized CRISPR base editing datasets \cite{yanyyyy3}, facilitate linking genotype with phenotype for broad applications in cancer biology. By integrating CRISPR knockout (or base editor) data with genomic, transcriptomic, and mutation profiles, researchers can better understand how certain genes drive tumor growth or therapeutic resistance. Our project is relevant to Bioinformatics because it showcases how publicly available multi-omics and CRISPR screens can be combined to reveal novel cancer vulnerabilities and refine biomarker discovery strategies.
+
+\section{Aim of the Project}
+\noindent
+We aim to answer: ``Which genes are essential or conditionally essential across different cancer cell lines and how do multi-omics features (mutation, copy number, expression) shape these dependencies?'' Additionally, we will explore a specialized CRISPR base editor dataset to see how precise nucleotide changes inform function, and confirm hits against external screens from BioGRID ORCS \cite{biogridORCS}.
+
+\section{Methods}
+\noindent
+\textbf{Data:} We will use DepMap 24Q4 CRISPR gene effect and dependency files, plus copy number, damaging mutation, and expression matrices \cite{depmap2024}. We will also incorporate a CRISPR base editor dataset by \cite{yanyyyy3}. All data are publicly available. For external validation, we will cross-reference BioGRID ORCS \cite{biogridORCS}.\\
+\textbf{Programming Languages and Tools:} Python 3.12 with \texttt{pandas}, \texttt{numpy}, \texttt{scikit-learn}, \texttt{xgboost}, \texttt{seaborn}, \texttt{matplotlib}, and possibly R-based tools (MAGeCK, BAGEL) if needed.\\
+\textbf{Planned Tasks:}
+\begin{enumerate}
+  \item \textbf{Data Acquisition \& Cleaning:} Download and parse DepMap CRISPR effect/dependency, copy number, mutations, expression data; parse base editor screen files.
+  \item \textbf{Integration:} Merge by \texttt{ModelID}, filter genes, handle missing data, unify gene naming.
+  \item \textbf{Exploratory Analysis:} Summaries, correlation, histograms of effect scores, distribution checks.
+  \item \textbf{Essentiality Identification:} Statistical tests (Mann--Whitney, etc.) and potential usage of existing pipelines (MAGeCK/BAGEL).
+  \item \textbf{Dimensionality Reduction \& Clustering:} Use PCA, t-SNE, or UMAP for visualization; K-means or hierarchical clustering to discover co-essential modules.
+  \item \textbf{Predictive Modeling:} Use random forests or XGBoost to predict gene essentiality or drug resistance from multi-omics features.
+  \item \textbf{Cross-Validation \& Reproducibility:} Evaluate performance, handle multiple testing, ensure robust code and documentation.
+  \item \textbf{External Validation:} Compare hits with BioGRID ORCS for confirmation.
+  \item \textbf{Tutorial Documentation:} Write a step-by-step Jupyter Notebook (or Python script) that reproduces analysis, leading to final results for the class demonstration.
+\end{enumerate}
+
+\nocite{huang2019}
+\bibliographystyle{apalike}
+\footnotesize
+\bibliography{yourbib}
+
+\end{document}
